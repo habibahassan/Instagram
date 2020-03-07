@@ -1,0 +1,43 @@
+<link rel="icon" href='https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2016/05/instagram-logo-796x404.png'
+  type="icon/images">
+{%extends "registration/base.html"%} {% load bootstrap3 %}
+{%load crispy_forms_tags%}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <img class='phone'
+        src="https://www.digitalmarketingceo.com/wp-content/uploads/2018/09/Screen-Shot-2018-09-03-at-11.05.04-PM-e1536030535339.png"
+        width="550px" alt="Image" />
+
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
+      <div class="panel panel-default" id='reg'>
+
+        <div class="panel-heading">
+
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png'
+            width='350px'>
+          <p>Sign up to see photos and videos from your friends.</p>
+        </div>
+        <div class="panel-body">
+          <form method="POST" class='text-center'>
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-primary btn-sm" value="Sign Up">sign up</button>
+            <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy </p>
+          </form>
+        </div>
+        <div class="panel-footer">
+          <small class='text-muted'>
+            have an account?<a class='ml-2' href="/accounts/login">&nbsp;&nbsp;Login</a>
+          </small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
