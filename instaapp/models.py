@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -22,7 +23,7 @@ class Profile(models.Model):
 class Image(models.Model):
     image = models.ImageField(upload_to = 'photos/', default='DEFAULT VALUE')
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="user_name")
-    profile = models.ForeignKey(Profile,null=True)
+    profile = models.ForeignKey(Profile,null=True,on_delete=models.CASCADE,)
     image_name = models.CharField(max_length =30)
     caption = models.CharField(max_length =50)
     post_date = models.DateTimeField(auto_now_add=True)

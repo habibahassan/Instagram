@@ -11,6 +11,7 @@ django = "==2.1"
 django-bootstrap3 = "*"
 django-crispy-forms = "*"
 psycopg2 = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
