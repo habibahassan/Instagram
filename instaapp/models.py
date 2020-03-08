@@ -75,3 +75,8 @@ class Like(models.Model):
 
     def __str__(self):
         return 'Like: ' + self.user.username 
+
+class Followers(models.Model):
+    user = models.CharField(max_length=15)
+    follower = models.CharField(max_length=15)
+    following = models.CharField(max_length=15)
