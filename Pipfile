@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django-registration = "==2.4.1"
 django = "==2.1"
 django-bootstrap3 = "*"
 django-crispy-forms = "*"
