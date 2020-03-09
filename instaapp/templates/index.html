@@ -14,7 +14,7 @@
             <div class="card">
                 <a style="text-decoration:none;color:black"href="profile/{{image.owner.id}}">
                     {% if image.profile.profile_pic.url %}
-            <p><img class="post" src="{{image.profile.profile_pic.url}}" ><strong>{{image.owner}}</strong>
+            <p><img class="post" src="{{image.profile.profile_pic.url}}" height="100px" width="100px" style="border-radius: 50%; width:50px; height:50px; border-color: brown; border-width: 1px;"><strong>{{image.owner}}</strong>
                
                 {% else %}
                 <strong>{{image.owner}}</strong>
@@ -25,7 +25,7 @@
             <img style="margin:0px;" src="{{image.image.url}}" class="img-responsive" alt="Image"><br>
             <p><strong>@{{image.owner}}</strong> {{image.caption}}</p>
 
-           <p class="foot"><a href="/comment/{{image.id}}"><span class="glyphicon glyphicon-heart"></span></a>   
+           <p class="foot"><a href="/comment/like/{{image.id}}"><span class="glyphicon glyphicon-heart"></span></a>   
             0<a style="text-decoration:none;"href="/comment/{{image.id}}"><span style="margin-left:5px;" class="glyphicon glyphicon-comment"></span></a></p>
             </div>
            <br>

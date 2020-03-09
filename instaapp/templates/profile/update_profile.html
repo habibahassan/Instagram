@@ -15,7 +15,7 @@
         <div class="col-md-3 col-xs-2"></div>
         <div class="col-md-6 col-xs-8">
           <h3 class="name">Create a profile first...</h3>
-          <form style="background-color: white" action="{%url 'update_profile' user.id%}" method="post"
+          <form style="background-color: white" action="{%url 'update_profile'%}" method="post"
             enctype="multipart/form-data">
             {%csrf_token%}
   

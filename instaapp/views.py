@@ -23,18 +23,19 @@ def profile(request):
 
     if current_user.id == current_user:
         images = Image.objects.all()
-        current_user = request.user
         user = request.user
         try:
             profile = Profile.objects.get(user_id=user)
         except ObjectDoesNotExist:
             return redirect(update_profile)
-    else: 
+    else:
+        images = Image.objects.all()
+        user = request.user
         try:
             profile = Profile.objects.get(user_id=user)
         except ObjectDoesNotExist:
             
-            return redirect(no_profile,id)      
+            return "No profile"     
             
     return render(request,'profile/profile.html',{'user':user,'profile':profile,'images':images,'current_user':current_user})
 
@@ -42,17 +43,16 @@ def profile(request):
 def update_profile(request):
     
     current_user = request.user
-    user = request.user
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user_id=user
+            profile.user_id=current_user.id
             profile.save()
             return redirect(home)
     else:
         form = UpdateProfileForm()
-    return render(request,'profile/update_profile.html',{'user':user,'form':form})
+    return render(request,'profile/update_profile.html',{'user':current_user,'form':form})
 
 def no_profile(request,id):
     
@@ -69,7 +69,9 @@ def search_results(request):
         
         message = f"{search_term}"
         
-        return render(request, 'searched.html',{"message":message,"users": searched_users,"profile":profile})
+        return render(request, 'searched.html',{"message":message, "users": searched_users})
+        
+
 
     else:
         message = "Please input a name in the search form"
@@ -84,7 +86,7 @@ def new_image(request):
         if form.is_valid():
             image = form.save(commit=False)
             image.owner = current_user
-            image.profile = current_user
+            image.profile = current_user.profile            
             image.save()
         return redirect(home)
     else:

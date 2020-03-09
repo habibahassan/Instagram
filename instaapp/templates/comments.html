@@ -37,7 +37,7 @@
         {% if like %}
         <p>You liked the image</p>
         {% else %}
-        <a href="like/{{image.id}}"><span class='glyphicon glyphicon-thumbs-up'style="font-size:25px"></span></a>
+        <a href="comment/like/{{image.id}}"><span class='glyphicon glyphicon-thumbs-up'style="font-size:25px"></span></a>
         {% endif %}
         <form style="border:white"action="/comment/{{image.id}}" method="post" enctype="multipart/form-data">
           {%csrf_token%}
