@@ -18,20 +18,20 @@ def home(request):
     return render(request, 'index.html',{"images":images,'users':users,'current':current,"likes":likes})
 
 @login_required(login_url='/accounts/login/')
-def profile(request,id):
+def profile(request):
     current_user = request.user
-    user = User.objects.get(id=id)
-    if current_user.id == user.id:
-        images = Image.objects.filter(owner_id=id)
+
+    if current_user.id == current_user:
+        images = Image.objects.all()
         current_user = request.user
-        user = User.objects.get(id=id)
+        user = request.user
         try:
-            profile = Profile.objects.get(user_id=id)
+            profile = Profile.objects.get(user_id=user)
         except ObjectDoesNotExist:
-            return redirect(update_profile,current_user.id)
+            return redirect(update_profile)
     else: 
         try:
-            profile = Profile.objects.get(user_id=id)
+            profile = Profile.objects.get(user_id=user)
         except ObjectDoesNotExist:
             
             return redirect(no_profile,id)      
@@ -39,15 +39,15 @@ def profile(request,id):
     return render(request,'profile/profile.html',{'user':user,'profile':profile,'images':images,'current_user':current_user})
 
 @login_required(login_url='/accounts/login/')
-def update_profile(request,id):
+def update_profile(request):
     
     current_user = request.user
-    user = User.objects.get(id=id)
+    user = request.user
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user_id=id
+            profile.user_id=user
             profile.save()
             return redirect(home)
     else:
@@ -76,19 +76,15 @@ def search_results(request):
         return render(request, 'searched.html',{"message":message})
 
 @login_required(login_url='/accounts/login/')
-def new_image(request,id):
+def new_image(request):
     current_user = request.user
-    try:
-        current_profile = Profile.objects.get(user_id=id)
-    except ObjectDoesNotExist:
-        return redirect(update_profile,current_user.id)
         
     if request.method == 'POST':
         form = PostImage(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
             image.owner = current_user
-            image.profile = current_profile
+            image.profile = current_user
             image.save()
         return redirect(home)
     else:

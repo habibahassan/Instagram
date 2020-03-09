@@ -5,11 +5,11 @@ from .models import Image,Like,Comment
 
 class Intagram_TestCases(TestCase):
     def setUp(self):
-        self.user1= User(id=1,username='James',email='jamesone12@gmail.com',password='ppppppp')
+        self.user1= User(id=1,username='dev',email='dev12@gmail.com',password='1234')
         self.user1.save()
-        self.profile = Profile(user_id=1,bio='i love cheese',profile_pic='images/food.jpg')
+        self.profile = Profile(user_id=1,bio='amazing',profile_pic='images/travel.jpg')
         self.profile.save_profile()
-        self.my_image = Image(id=1,caption='eating is awesome', owner=self.user1,profile=self.profile,image='media/get.jpg',image_name='muk')
+        self.my_image = Image(id=1,caption='traveling is good', owner=self.user1,profile=self.profile,image='media/get.jpg',image_name='giraff')
         self.my_image.save_image()
 
     def tearDown(self):
@@ -43,6 +43,6 @@ class Intagram_TestCases(TestCase):
 
     def test_update_single_image(self):
         self.my_image.save_image()
-        filtered_object =Image.update_image('muk','Greener')
-        updated = Image.objects.get(image_name='Greener')
-        self.assertEqual(updated.image_name,'Greener')
+        filtered_object =Image.update_image('giraff','life')
+        updated = Image.objects.get(image_name='life')
+        self.assertEqual(updated.image_name,'life')
