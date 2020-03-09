@@ -14,7 +14,7 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 django = "==2.0.13"
-django-registration = "==2.4.1"
+django-registration = "*"
 
 [requires]
 python_version = "3.6"
