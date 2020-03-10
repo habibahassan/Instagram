@@ -26,7 +26,7 @@
     <div class="col-md-8 col-sm-10 col-xs-12">
         <div class="card">
                 
-          <p><img class="post" src="{{image.profile.profile_pic.url}}"><strong>{{image.owner}}</strong></p><br>
+          <p><img class="post" src="{{image.profile.profile_pic.url}}" height="100px" width="100px" style="border-radius: 50%; width:50px; height:50px; border-color: brown; border-width: 1px;"><strong>{{image.owner}}</strong></p><br>
                                 
         <img class="img-responsive" src="{{image.image.url}}"><br>
         {% if likes %}
@@ -39,7 +39,7 @@
         {% else %}
         <a href="comment/like/{{image.id}}"><span class='glyphicon glyphicon-thumbs-up'style="font-size:25px"></span></a>
         {% endif %}
-        <form style="border:white"action="/comment/{{image.id}}" method="post" enctype="multipart/form-data">
+        <form style="border:white"action="comment/{{image.id}}" method="post" enctype="multipart/form-data">
           {%csrf_token%}
       
           {% bootstrap_form form%}

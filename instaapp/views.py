@@ -25,14 +25,14 @@ def profile(request):
         images = Image.objects.all()
         user = request.user
         try:
-            profile = Profile.objects.get(user_id=user)
+            profile = Profile.objects.all()
         except ObjectDoesNotExist:
             return redirect(update_profile)
     else:
         images = Image.objects.all()
         user = request.user
         try:
-            profile = Profile.objects.get(user_id=user)
+            profile = Profile.objects.all()
         except ObjectDoesNotExist:
             
             return "No profile"     
