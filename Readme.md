@@ -4,6 +4,9 @@ An insta clone python application based on Django framework, 2020
 ## Author
 Habiba Hassan
 
+## Behaviour
+* update your profile image before posting image
+
 ## Code Beat
 [![codebeat badge](https://codebeat.co/badges/759f7338-64d7-4bdf-bab6-c99c34e94a7a)](https://codebeat.co/projects/github-com-habibahassan-instagram-master)
 

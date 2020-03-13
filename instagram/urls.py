@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('instaapp.urls')),
     path('accounts/', include('registration.backends.simple.urls')),
     path('logout/', views.logout, {"next_page": '/'}),
+
     
 ]
 

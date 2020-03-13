@@ -15,6 +15,7 @@ urlpatterns = [
     re_path('comment/like/(\d+)',views.like_pic,name="like"),
     path('image/update/',views.update_image,name='update_image'),
     path('profile/follow/', views.follow, name='follow'),
+    path('^$', views.usersignup, name='register_user'),
 ]
 
 if settings.DEBUG:
