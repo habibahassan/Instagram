@@ -10,7 +10,7 @@ class Profile(models.Model):
     followers = models.ManyToManyField('Profile',related_name="profile_followers",blank=True,default=0)
     following = models.ManyToManyField('Profile',related_name="profile_following",blank=True,default=0)
     def __str__(self):
-        return self.user
+        return str(self.user)
     def save_profile(self):
         self.save()
     def delete_profile(self):
@@ -28,7 +28,7 @@ class Image(models.Model):
     caption = models.CharField(max_length =50)
     post_date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.image_name
+        return str(self.image_name)
 
     def save_image(self):
         self.save()
@@ -58,7 +58,7 @@ class Comment(models.Model):
     posted_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.comment
+        return str(self.comment)
 
 
     def save_comment(self):
