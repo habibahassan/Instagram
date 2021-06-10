@@ -13,7 +13,7 @@ pillow = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
-django = "==2.0.13"
+django = "==2.2.24"
 django-registration = "==2.0"
 
 [requires]
